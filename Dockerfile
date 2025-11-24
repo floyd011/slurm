@@ -15,7 +15,7 @@ RUN wget https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 && \
     tar -xf slurm-${SLURM_VERSION}.tar.bz2 --strip-components=1 && \
     rm slurm-${SLURM_VERSION}.tar.bz2
 
-RUN mk-build-deps -t'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends' -i debian/control && \ 
+RUN mk-build-deps -t'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends' -i debian/control && \
     debuild -b -uc -us
 
 FROM ubuntu:22.04
