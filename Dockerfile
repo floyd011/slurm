@@ -54,6 +54,8 @@ RUN wget -O /usr/local/bin/systemctl.py https://github.com/gdraheim/docker-syste
 # Configure
 
 COPY slurm.conf /etc/slurm/
+COPY cgroup.conf /etc/slurm/
+COPY testmem.slurm /root
 COPY --chmod=600 --chown=slurm:nogroup slurmdbd.conf cgroup.conf /etc/slurm/
 COPY --chmod=400 --chown=slurm:nogroup jwt_hs256.key /etc/slurm/
 
