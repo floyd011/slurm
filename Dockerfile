@@ -35,7 +35,7 @@ COPY --from=build \
 
 RUN apt update && apt install -y mariadb-server openssh-server python3 python3-pip less wget /opt/*.deb
 RUN useradd --system slurm
-RUN python3-pip install numpy
+
 # slurmrestd can not run as root
 RUN useradd --system slurmrestd && \
     sed -i 's/# User=/User=slurmrestd/' /usr/lib/systemd/system/slurmrestd.service && \
