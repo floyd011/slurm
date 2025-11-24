@@ -1,8 +1,8 @@
-# Slurm 22.05.8
+# Slurm 23.11.4
 
 Features:
 
-- [Slurm batch scheduler](https://slurm.schedmd.com/) version 22.05.8
+- [Slurm batch scheduler](https://slurm.schedmd.com/) version 23.11.4
 - A Cluster `mycluster` with two queues/partitions: `mypartition` and `otherpartition`.
 - SSH access for user `xenon` with password `javagat`
 - Run [Slurm REST API](https://slurm.schedmd.com/rest_quickstart.html#basic_usage) on port 6820
@@ -10,7 +10,7 @@ Features:
 ## Run
 
 ```bash
-docker run  --privileged -p 10022:22 slurm-hpc:22.05.80
+docker run  --privileged -p 10022:22 slurm-hpc:23.11.4
 ```
 (privileged flag is needed becasue slurm needs cgroup and IPC permission)
 
@@ -52,5 +52,5 @@ wget --header="X-SLURM-USER-TOKEN:${SLURM_JWT}" -q -S -O - http://localhost:6820
 ## Build
 
 ```bash
-docker build -t slurm:22.05.8 .
+docker build -t slurm:23.11.4 .
 ```
