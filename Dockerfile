@@ -9,7 +9,7 @@ RUN apt update && apt install -y \
 
 WORKDIR /src
 
-ARG SLURM_VERSION=22.05.8
+ARG SLURM_VERSION=23.11.4
 
 RUN wget https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 && \
     tar -xf slurm-${SLURM_VERSION}.tar.bz2 --strip-components=1 && \
@@ -22,7 +22,7 @@ FROM ubuntu:22.04
 
 # install
 
-ARG SLURM_VERSION=22.05.8
+ARG SLURM_VERSION=23.11.4
 
 COPY --from=build \
      /slurm-smd_${SLURM_VERSION}-1_amd64.deb \
