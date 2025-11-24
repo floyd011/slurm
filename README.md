@@ -10,7 +10,11 @@ Features:
 ## Run
 
 ```bash
-docker run --cgroupns=host --privileged --cap-add=sys_admin --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:rw  -p 10022:22 --rm --name slurmtest -d -v $(pwd)/slurm.conf:/etc/slurm/slurm.conf -v $(pwd)/cgroup.conf:/etc/slurm/cgroup.conf --pid=host slurm-hpc:23.11.4 /sbin/init
+docker run --cgroupns=host --privileged --cap-add=sys_admin --tmpfs /run \
+        --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:rw  -p 10022:22 \
+        --rm --name slurmtest -d -v $(pwd)/slurm.conf:/etc/slurm/slurm.conf \
+        -v $(pwd)/cgroup.conf:/etc/slurm/cgroup.conf --pid=host \
+        slurm-hpc:23.11.4 /sbin/init
 ```
 (privileged flag is needed becasue slurm needs cgroup and IPC permission)
 
