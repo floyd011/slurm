@@ -33,7 +33,7 @@ COPY --from=build \
      /slurm-smd-slurmctld_${SLURM_VERSION}-1_amd64.deb \
      /opt/
 
-RUN apt update && apt install -y mariadb-server openssh-server python3 python3-pip less wget /opt/*.deb
+RUN apt update && apt install -y mariadb-server openssh-server python3 nano sudo mc less wget /opt/*.deb
 RUN useradd --system slurm
 
 # slurmrestd can not run as root
@@ -73,7 +73,12 @@ RUN mkdir -p /var/spool/slurm/state \
 
 ADD slurm_acct_db.sql /etc/slurm/
 ADD mariadb.service /usr/lib/systemd/system/mariadb.service
-
+RUN mkdir -p /run/mysqld && \
+    chown -R mysql:mysql /run/mysqld && \
+    chmod 755 /run/mysqld && \
+    mkdir -p /var/lib/mysql && \
+    chown -R mysql:mysql /var/lib/mysql
+	
 RUN systemctl start mariadb && \
     mariadb < /etc/slurm/slurm_acct_db.sql && \
     systemctl stop mariadb
