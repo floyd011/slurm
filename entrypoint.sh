@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo -e "\nstarting db..."
+mkdir -p /run/mysqld
+chown mysql:mysql /run/mysqld
 systemctl start mariadb munge sshd
 
 echo -e "\nwaiting for db to start..."
