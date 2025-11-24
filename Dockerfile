@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.licenses Apache-2.0
 
 RUN apt update && apt install -y \
     build-essential fakeroot devscripts equivs \
-    gcc make libssl-dev libmunge-dev tar wget nano mc \
+    gcc make libssl-dev libmunge-dev tar wget nano \
     libfreeipmi-dev libreadline-dev \
     systemd libmariadb-dev libpmix-dev \
     libjwt-dev libhttp-parser-dev libjson-c-dev libyaml-dev
